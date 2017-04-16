@@ -4,15 +4,21 @@ import { Injectable } from '@angular/core';
 export class DataService {
 
   constructor() { }
-  items:any = [];
-  itemsIng:any=[];
+  items:any;
+  recipeBook:any[]=[];
   recipe:any;
   ingeredients:any;
 
 store(rec,ingr) {
-    this.items.push(rec);
-    this.itemsIng.push(ingr);
-    localStorage.setItem("recipename", JSON.stringify(this.items));
-    localStorage.setItem("ingredients", JSON.stringify(this.itemsIng));  
+    ingr = ingr.split(",");
+    this.items = { 'recipe': rec, 'ingredients': ingr};
+    this.recipeBook.push(this.items);
+    localStorage.setItem("items", JSON.stringify(this.recipeBook));
+}
+
+genRecipe(){
+    const gen=JSON.parse(localStorage.getItem("items"));
+    console.log("Hello"+gen[0].recipe);
+    return gen;
 }
 }

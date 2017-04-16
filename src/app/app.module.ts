@@ -8,11 +8,15 @@ import { AppComponent } from './app.component';
 import { CreateRecipeComponent } from './create-recipe/create-recipe.component';
 import { DataService } from './shared/data.service';
 import { appRoutes} from './routes';
+import { NavComponent } from './nav/nav.component';
+import { RecipeBookComponent } from './recipe-book/recipe-book.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CreateRecipeComponent
+    CreateRecipeComponent,
+    NavComponent,
+    RecipeBookComponent
   ],
   imports: [
     BrowserModule,
