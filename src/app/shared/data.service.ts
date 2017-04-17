@@ -18,7 +18,11 @@ store(rec,ingr) {
 
 genRecipe(){
     const gen=JSON.parse(localStorage.getItem("items"));
-    console.log("Hello"+gen[0].recipe);
+    console.log("Hello"+gen[0].ingredients);
     return gen;
+}
+delete(){
+  var del=this.genRecipe();
+  localStorage.removeItem(del[0]);
 }
 }

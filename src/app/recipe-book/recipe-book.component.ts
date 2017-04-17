@@ -7,9 +7,15 @@ import { DataService } from '../shared/data.service';
   styleUrls: ['./recipe-book.component.scss']
 })
 export class RecipeBookComponent implements OnInit {
-  recipeBook:string=this._dataService.genRecipe();
+  recipeBook:any=this._dataService.genRecipe();
+
 
   constructor(private _dataService:DataService) { } 
   ngOnInit() {
+    console.log(this.recipeBook.recipe);
+  }
+
+  delete(){
+    this._dataService.delete();
   }
 }
