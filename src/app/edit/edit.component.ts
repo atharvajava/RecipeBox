@@ -1,18 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../shared/data.service';
-import { Router } from '@angular/router';
+import { Router} from '@angular/router'
 
 @Component({
-  selector: 'app-create-recipe',
-  templateUrl: './create-recipe.component.html',
-  styleUrls: ['./create-recipe.component.scss']
+  selector: 'app-edit',
+  templateUrl: './edit.component.html',
+  styleUrls: ['./edit.component.scss']
 })
-export class CreateRecipeComponent implements OnInit {
+export class EditComponent implements OnInit {
 
-  constructor(private _dataService:DataService,private router:Router) { }
+  constructor(private _dataService:DataService,private router:Router ) { }
 
   ngOnInit() {
   }
+
   insertRecipe(){
     var r=(<HTMLInputElement>document.getElementById("recipe")).value;
     var i=(<HTMLInputElement>document.getElementById("ingredients")).value;

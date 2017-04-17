@@ -21,8 +21,26 @@ genRecipe(){
     console.log("Hello"+gen[0].ingredients);
     return gen;
 }
-delete(){
-  var del=this.genRecipe();
-  localStorage.removeItem(del[0]);
+delete(id){
+  var json=JSON.parse(localStorage["items"]);
+  console.log("called")
+  for(var i=0;i<json.length;i++){
+    if(json[i].recipe==id){
+      console.log("called")
+      json.splice(i,1);
+    }
+  }
+  localStorage["items"]=JSON.stringify(json);
+}
+edit(id){
+  var json=JSON.parse(localStorage["items"]);
+  console.log("called")
+  for(var i=0;i<json.length;i++){
+    if(json[i].recipe==id){
+      console.log("called")
+      json.splice(i,1);
+    }
+  }
+  localStorage["items"]=JSON.stringify(json);
 }
 }

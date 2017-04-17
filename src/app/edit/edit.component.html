@@ -1,12 +1,12 @@
 <div class="container-fluid">
   <div class="jumbotron">
   <form class="text-center">
-    <h3> Create Recipe</h3>
+    <h3> Edit Recipe</h3>
     <br><label>Recipe Name : </label>
-    &nbsp;<input id="recipe" type="text" placeholder="Enter Recipe Name"/><br><br>
+    &nbsp;<input id="recipe" type="text" placeholder="Enter Recipe Name" disabled/><br><br>
     <label>Ingredients &nbsp;&nbsp; :</label>
     &nbsp;<input id="ingredients" type="text" placeholder="Enter Ingredients"/><br><br><br>
-    <button (click)="insertRecipe()" class="btn btn-secondary" type="submit">Submit</button>
+    <button (click)="editRecipe()" class="btn btn-secondary" type="submit">Submit</button>
   </form>
   </div>
 </div>

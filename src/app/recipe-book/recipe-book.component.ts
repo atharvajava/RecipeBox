@@ -8,14 +8,21 @@ import { DataService } from '../shared/data.service';
 })
 export class RecipeBookComponent implements OnInit {
   recipeBook:any=this._dataService.genRecipe();
+  value:any;
 
 
-  constructor(private _dataService:DataService) { } 
+  constructor(private _dataService:DataService) {
+   } 
   ngOnInit() {
     console.log(this.recipeBook.recipe);
   }
 
   delete(){
-    this._dataService.delete();
+    this._dataService.delete(this.value);
+    this.recipeBook=this._dataService.genRecipe();
+  }
+  button(btnValue){
+    console.log(btnValue.recipe)
+    this.value=btnValue.recipe
   }
 }

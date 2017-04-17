@@ -10,13 +10,15 @@ import { DataService } from './shared/data.service';
 import { appRoutes} from './routes';
 import { NavComponent } from './nav/nav.component';
 import { RecipeBookComponent } from './recipe-book/recipe-book.component';
+import { EditComponent } from './edit/edit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CreateRecipeComponent,
     NavComponent,
-    RecipeBookComponent
+    RecipeBookComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,
