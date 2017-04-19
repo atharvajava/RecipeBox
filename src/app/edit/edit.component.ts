@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../shared/data.service';
-import { Router} from '@angular/router'
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-edit',
@@ -8,18 +8,23 @@ import { Router} from '@angular/router'
   styleUrls: ['./edit.component.scss']
 })
 export class EditComponent implements OnInit {
+  value:any=this._dataService.value||"";
+  recipeName:string=this.value.recipe||"";
+  ingredientsName:any=this.value.ingredients||"";
+  temp:any=this.ingredientsName+'';
 
   constructor(private _dataService:DataService,private router:Router ) { }
 
   ngOnInit() {
+    console.log(this.value);
+    (<HTMLInputElement>document.getElementById("recipe")).value+=this.recipeName;
+    (<HTMLInputElement>document.getElementById("ingredients")).value+=this.ingredientsName;
   }
 
-  insertRecipe(){
-    var r=(<HTMLInputElement>document.getElementById("recipe")).value;
-    var i=(<HTMLInputElement>document.getElementById("ingredients")).value;
-    console.log(r);
-    console.log(i);
-    this._dataService.store(r,i);
-    this.router.navigate(['/recipe-book']);
+  editRecipe(){
+    this.temp=this.temp.split(",");
+    console.log(this.temp);
+    this.ingredientsName=(<HTMLInputElement>document.getElementById("ingredients")).value;
+    this._dataService.edit(this.ingredientsName,this.temp);
   }
 }

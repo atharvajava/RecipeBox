@@ -1,20 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,EventEmitter,Input,Output } from '@angular/core';
 import { DataService } from '../shared/data.service';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-recipe-book',
   templateUrl: './recipe-book.component.html',
   styleUrls: ['./recipe-book.component.scss']
 })
+
+
+
 export class RecipeBookComponent implements OnInit {
   recipeBook:any=this._dataService.genRecipe();
-  value:any;
+  value:any="";
 
 
-  constructor(private _dataService:DataService) {
+  constructor(private _dataService:DataService,private router:Router) {
    } 
   ngOnInit() {
-    console.log(this.recipeBook.recipe);
   }
 
   delete(){
@@ -24,5 +26,9 @@ export class RecipeBookComponent implements OnInit {
   button(btnValue){
     console.log(btnValue.recipe)
     this.value=btnValue.recipe
+    this._dataService.storeRecValue(btnValue);
+  }
+  edit(){
+    this.router.navigate(['/edit-recipe']);
   }
 }

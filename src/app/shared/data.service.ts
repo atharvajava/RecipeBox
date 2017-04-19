@@ -8,6 +8,7 @@ export class DataService {
   recipeBook:any[]=[];
   recipe:any;
   ingeredients:any;
+  value:any;
 
 store(rec,ingr) {
     ingr = ingr.split(",");
@@ -21,10 +22,10 @@ genRecipe(){
     console.log("Hello"+gen[0].ingredients);
     return gen;
 }
-delete(id){
+delete(id) {
   var json=JSON.parse(localStorage["items"]);
   console.log("called")
-  for(var i=0;i<json.length;i++){
+  for(let i=0;i<json.length;i++){
     if(json[i].recipe==id){
       console.log("called")
       json.splice(i,1);
@@ -32,15 +33,25 @@ delete(id){
   }
   localStorage["items"]=JSON.stringify(json);
 }
-edit(id){
+edit(id,old){
   var json=JSON.parse(localStorage["items"]);
-  console.log("called")
-  for(var i=0;i<json.length;i++){
-    if(json[i].recipe==id){
-      console.log("called")
-      json.splice(i,1);
+  console.log(json[0].ingredients);
+  console.log(old);
+  id=id.split(",");
+  console.log(JSON.stringify(json[0].ingredients)===JSON.stringify(old));
+  for(let i=0;i<json.length;i++){
+    console.log(i);
+    if(JSON.stringify(json[i].ingredients)===JSON.stringify(old)){
+     // console.log("called"+json[i].ingredients);
+      json[i].ingredients=id.slice(0);
     }
   }
   localStorage["items"]=JSON.stringify(json);
+  //localStorage.setItem("items", JSON.stringify(this.recipeBook));
+}
+
+storeRecValue(val){
+this.value=val;
 }
 }
+
